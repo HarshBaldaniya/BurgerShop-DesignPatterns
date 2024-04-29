@@ -36,3 +36,4 @@ Our code kitchen is organized into various sections, ensuring a clean working en
 
 - Factory Design Pattern: Imagine walking into a burger shop and ordering directly from the menu. The Factory Pattern is the behind-the-scenes magic that takes your order and delivers the right burger without you needing to know how it's made.
 - Builder Design Pattern: For those who like their burger a specific way, the Builder Pattern is like having a conversation with the chef as they build your burger layer by layer, ensuring every ingredient is exactly to your liking.
+- Composite Design Pattern: 
