@@ -24,21 +24,31 @@ export function buildAndCookCustomBurger() {
 }
 
 export function buildAndCookCustomBurgerwithMenu() {
-  console.log("\nBuilding a custom veg meal...");
-  const myCustomMeal = new CustomVegBurgerBuilderwithMenu()
-    .setBun("whole wheat bun")
-    .setPatties("black bean patty")
-    .setSauce("avocado spread")
-    .setToppings(["tomato", "onions"])
-    .addSide("fries", 2.0)
-    .addDrink("cola", 1.5)
-    .build();
-
-  // Cooking the custom meal involves printing out all components
-  console.log("Your custom meal includes:");
-  myCustomMeal.print();
-  console.log("\n"); // Ensure we add a new line for clean separation in terminal
-  rl.close();
+    const builder = new CustomVegBurgerBuilderwithMenu();
+    console.log("\nBuilding a custom veg meal...");
+    
+    rl.question("Choose a bun (e.g., whole wheat, sesame): ", bun => {
+        builder.setBun(bun);
+        
+        rl.question("Choose a patty (e.g., black bean, mushroom): ", patty => {
+            builder.setPatties(patty);
+            
+            rl.question("Choose a sauce (e.g., mayo, spicy): ", sauce => {
+                builder.setSauce(sauce);
+                
+                rl.question("Enter toppings (comma separated, e.g., tomato, lettuce): ", toppings => {
+                    const toppingsList = toppings.split(",").map(item => item.trim());
+                    builder.setToppings(toppingsList);
+                    
+                    const meal = builder.build();
+                    console.log("Your custom meal includes:");
+                    meal.print();
+                    console.log(`Total cost: $${meal.getPrice()}`);
+                    rl.close();
+                });
+            });
+        });
+    });
 }
 
 export function selectBurger(rl: readline.Interface, callback: Function) {
